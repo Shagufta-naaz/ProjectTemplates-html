@@ -1,0 +1,45 @@
+<html>
+    <head><title>problems</title>
+    <style>
+        body{
+            background-color: #c1d4d0;
+        }
+        .list form {
+            color: black;
+            border-radius: 3px;
+            margin-bottom: 15px;
+            background: #fff;
+            box-shadow: 2px 4px 4px rgba(0, 0, 0, 0.5);
+            padding: 30px;
+        }
+        .list {
+            width: 450px;
+            margin: 80px auto;
+            padding: 30px 0;
+        }
+        h5{
+            color: #999;
+        }
+        h3{
+            margin-top: 0;
+        }
+    </style>
+    </head>
+    <body>
+        <div class="list">
+        <form method="POST">
+        <h3>The problems listed to vote are:</h3>
+        <h5>Select the problem you want to vote for.</h5>
+        <hr>
+        <input type="radio" name="problem" value="Frequent Power Cuts">Frequent Power Cuts<br><br>
+        <input type="radio" name="problem" value="Improper Drinage System">Improper Drinage System<br><br>
+        <input type="radio" name="problem" value="Inadequate Water Supply">Inadequate Water Supply<br><br>
+        <input type="radio" name="problem" value="Open Manholes">Open Manholes<br><br>
+        <input type="radio" name="problem" value="Street Lights">Street Lights<br><br>
+        <input type="radio" name="problem" value="Unclean Water Supply">Unclean Water Supply<br><br>
+        <input type="submit">
+        </form>
+        <a href="{{url_for('back')}}"><button>Go Back <-</button></a>
+        </div>
+    </body>
+</html>

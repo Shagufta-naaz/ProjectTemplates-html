@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Logout</title>
+        <script type="text/javascript" >
+            history.pushState(null, null, location.href);
+            window.onpopstate = function () {
+            history.go(1);
+            };
+         </script>
+    </head>
+    <body>
+        <h3>Successfully logged out</h3>
+        <p>
+            To go to home page,<a href="{{ url_for('mp3_login') }}">Follow this link</a>
+        </p>
+    </body>
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Mainpage</title>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.min.js'></script>
+    <style>
+        body {
+            background:#c1d4d0;
+            text-decoration: none;
+             }
+         .vl {
+            border-left: 3px solid black;
+            height: 657px;
+            margin-left: 330px;
+            position: absolute;
+            top: 0;
+         }
+         li a {
+            display: block;
+            color:black;
+            text-align: center;
+            padding: 6px 8px;
+            text-decoration: none;
+            }
+        ul {
+            margin: 0;
+            padding: 0;
+            position: absolute;
+            overflow: hidden;
+            background-color:white;
+            font-size: 18px;
+            margin-top: 140px;
+            margin-left: 380px;
+        }
+        button{
+            float:right;
+            font-size: 20px;
+            margin-right: 40px;
+        }
+        .btn
+        {   float:left;
+            font-size: 20px;
+            margin-right: 40px;
+        }
+        a.nounderline{text-decoration:none;}
+    </style>
+</head>
+<body>
+    <h2>{{uname}}</h2>
+    <button class="btn"><a href="{{ url_for('mp3_problem') }}" class="nounderline"><b> Click here to vote </b></a></button>
+    <button type="button"><a href="{{ url_for('logout')}}" class="nounderline"><b>Logout</b></a></button>
+    <br>
+    <div class="vl"></div>
+    <center>
+        <h1>Votes so far</h1>
+    </center>
+    <center>
+        <canvas id="chart" width="600" height="400"></canvas>
+        <script>
+        var barData = {   labels : [
+                          {% for item in x %}
+                           "{{ item }}",
+                          {% endfor %}
+                    ],
+                    datasets : [{
+                    //backgroundColor:"rgba(151,187,205,0.2)",
+                        fillColor: "rgba(151,187,205,0.2)",
+                        strokeColor: "rgba(151,187,205,1)",
+                        pointColor: "rgba(151,187,205,1)",
+                        data : [
+                        {% for item in y %}
+                            "{{ item }}",
+                        {% endfor %}
+                        ]
+                        }
+                        ]
+                      }
+                     // get bar chart canvas
+                     var mychart = document.getElementById("chart").getContext("2d");
+                       steps = 1
+                       max = 10
+                     // draw bar chart
+                     new Chart(mychart).Bar(barData, {
+                       scaleOverride: true,
+                       scaleSteps: steps,
+                       scaleStepWidth: Math.ceil(max / steps),
+                       scaleStartValue: 0,
+                       scaleShowVerticalLines: true,
+                       scaleShowGridLines : true,
+                       barShowStroke : true,
+                       scaleShowLabels: true
+                       }
+                     );
+                    </script>
+                  </center>
+    </div>
+</body>
+</html>
